@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -20,7 +21,12 @@ public class PostService {
 	}
 	
 	public Post save(Post post) {
-		return postRepository.save(post);
+	    Post savedPost = postRepository.save(post); // 저장 먼저
+
+	    LocalDateTime threshold = LocalDateTime.now().minusDays(30);
+	    postRepository.deletePostsOlderThan(threshold); // 오래된 글 삭제
+
+	    return savedPost;
 	}
 	
 	public Post findById(Long id) {

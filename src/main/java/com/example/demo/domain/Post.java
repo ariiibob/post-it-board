@@ -1,5 +1,8 @@
 package com.example.demo.domain;
+import java.time.LocalDateTime;
 import java.util.Random;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -50,5 +53,8 @@ public class Post {
 	            this.borderColor = String.format("#%02x%02x%02x", r, g, b);
 	        }
 	    }
+	    
+	    @CreationTimestamp // Hibernate가 자동으로 생성 시간 기록
+	    private LocalDateTime createdAt;
 
 }
