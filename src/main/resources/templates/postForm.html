@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>새 게시글 작성</h1>
-    <form action="/form" method="post">
+    <form action="/form" method="post" enctype="multipart/form-data">
         <label for="title">제목:</label>
         <input type="text" id="title" name="title"><br>
 
@@ -15,6 +15,9 @@
 
         <label for="author">작성자:</label>
         <input type="text" id="author" name="author"><br>
+
+        <label for="image">이미지:</label>
+        <input type="file" id="image" name="imageFile" accept="image/*"><br>
 
         <button type="submit">등록</button>
     </form>

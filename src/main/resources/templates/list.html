@@ -13,7 +13,7 @@
         .post-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 20px;
+            gap: 60px;
         }
 
         .post-card {
@@ -52,10 +52,15 @@
 <body>
     <h1>글 목록</h1>
     <div class="post-container">
-        <div class="post-card" th:each="post : ${postList}">
+        <div class="post-card" th:each="post : ${postList}" 
+		th:style="'background-color:' + ${post.color} + '; border: 1px solid ' + ${post.borderColor}">
             <div class="content" th:text="${post.content}">글 내용</div>
+			<div th:if="${post.image != null}">
+			    <img th:src="@{/posts/{id}/image(id=${post.id})}" style="width: 160px;" alt="이미지" />
+			</div>
             <div class="author" th:text="${post.author}">작성자</div>
         </div>
     </div>
 </body>
+
 </html>
