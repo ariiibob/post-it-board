@@ -9,7 +9,7 @@
 		    font-family: 'Segoe UI', sans-serif;
 			height: 100vh;
 		    background-color: #f9f9f9;
-			color: #333;
+			color: #666;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -27,23 +27,48 @@
 			overflow: hidden;
 		}
 		label, input, textarea, button {
-			width: 360px;
+			width: 240px;
+		}
+		label {
+			margin-bottom: 2px;
+		}
+		.custom-file-upload {
+			display: inline-block;
+			border-radius: 4px;
+			padding: 6px 0px;
+			color: #666;
+			border: 1px solid #e0e0a8;
+			cursor: pointer;
+			text-align: center;
+		}
+		button {
+			border-radius: 4px;
+			padding: 6px 0px;
+			color: #666;
+			border: 1px solid #e0e0a8;
+			background-color: #e0e0a8;
+			cursor: pointer;
+		}
+		input, textarea {
+			background-color: #fffec8;
+			border-radius: 4px;
+			padding: 6px 0px;
+			color: #666;
+			border: 1px solid #e0e0a8;
 		}
 	</style>
 </head>
 <body>
     <form action="/form" method="post" enctype="multipart/form-data">
-        <label for="title">title:</label>
-        <input type="text" id="title" name="title"><br>
 
-        <label for="content">content:</label>
+        <label for="content">content</label>
         <textarea id="content" name="content" maxlength="84"></textarea><br>
 
-        <label for="author">author:</label>
+        <label for="author">author</label>
         <input type="text" id="author" name="author"><br>
 
-        <label for="image">image:</label>
-        <input type="file" id="image" name="imageFile" accept="image/*"><br>
+        <label for="image">image</label>
+        <input type="file" id="image" name="imageFile" accept="image/*" style="padding-left: 6px;"><br>
 
         <button type="submit">등록</button>
     </form>

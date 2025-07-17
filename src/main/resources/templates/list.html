@@ -52,16 +52,26 @@
 </head>
 <body>
     <h1>글 목록</h1>
-    <div class="post-container">
-        <div class="post-card" th:each="post : ${postList}" 
-		th:style="'background-color:' + ${post.color} + '; border: 1px solid ' + ${post.borderColor}">
-            <div class="content" th:text="${post.content}">글 내용</div>
-			<div th:if="${post.image != null}">
-			    <img th:src="@{/posts/{id}/image(id=${post.id})}" style="width: 160px;" alt="이미지" />
-			</div>
-            <div class="author" th:text="${post.author}">작성자</div>
-        </div>
-    </div>
+	<div class="post-container">
+	    <!-- 새 글 작성 버튼 -->
+	    <a href="/form" style="text-decoration: none;">
+	        <div class="post-card" style="display: flex; align-items: center; justify-content: center;
+			color: #aaa; font-weight: bold; font-size: xx-large;">
+	            +
+	        </div>
+	    </a>
+
+	    <!-- 포스트 목록 -->
+	    <div class="post-card" th:each="post : ${postList}"
+	         th:style="|background-color: ${post.color}; border: 1px solid ${post.borderColor};|">
+	        <div class="content" th:text="${post.content}">글 내용</div>
+	        <div th:if="${post.image != null}">
+	            <img th:src="@{/posts/{id}/image(id=${post.id})}" style="width: 160px;" alt="이미지" />
+	        </div>
+	        <div class="author" th:text="${post.author}">작성자</div>
+	    </div>
+	</div>
+
 </body>
 
 </html>
