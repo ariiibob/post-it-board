@@ -3,20 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Post 작성</title>
+	<style>
+		html, body { margin: 0; padding: 0; }
+		body {
+		    font-family: 'Segoe UI', sans-serif;
+			height: 100vh;
+		    background-color: #f9f9f9;
+			color: #333;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 400px;
+			width: 400px;
+			background-color: #fffec8;
+			border: 1px solid #e0e0a8;
+			box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+		}
+		label, input, textarea, button {
+			width: 360px;
+		}
+	</style>
 </head>
 <body>
-    <h1>새 게시글 작성</h1>
     <form action="/form" method="post" enctype="multipart/form-data">
-        <label for="title">제목:</label>
+        <label for="title">title:</label>
         <input type="text" id="title" name="title"><br>
 
-        <label for="content">내용:</label>
-        <textarea id="content" name="content"></textarea><br>
+        <label for="content">content:</label>
+        <textarea id="content" name="content" maxlength="84"></textarea><br>
 
-        <label for="author">작성자:</label>
+        <label for="author">author:</label>
         <input type="text" id="author" name="author"><br>
 
-        <label for="image">이미지:</label>
+        <label for="image">image:</label>
         <input type="file" id="image" name="imageFile" accept="image/*"><br>
 
         <button type="submit">등록</button>
