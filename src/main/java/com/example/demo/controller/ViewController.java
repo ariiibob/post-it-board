@@ -74,5 +74,12 @@ public class ViewController {
     		return ResponseEntity.notFound().build();
     	} 
     }
+    
+    @PostMapping("/posts/{id}/delete")
+    public String delete(@PathVariable Long id) {
+        postService.delete(id);
+        return "redirect:/posts";
+    }
+
 
 }

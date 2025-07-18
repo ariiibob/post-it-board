@@ -30,6 +30,7 @@
             flex-direction: column;
             justify-content: space-between;
             transition: transform 0.1s;
+			position: relative;
         }
 
         .post-card:hover {
@@ -48,6 +49,25 @@
             color: #666;
             margin-top: 8px;
         }
+		button {
+			color: #888;
+			border: none;
+			background-color: inherit;
+			transform: rotate(45deg);
+			position: absolute;
+			top: 6px;
+			right: 6px;
+			cursor: pointer;
+			opacity: 0;
+		}
+		.post-card:hover button {
+		    opacity: 1;
+		}
+		@media (hover: none) and (pointer: coarse) {
+		    button {
+		        opacity: 1;
+		    }
+		}
     </style>
 </head>
 <body>
@@ -64,6 +84,9 @@
 	    <!-- 포스트 목록 -->
 	    <div class="post-card" th:each="post : ${postList}"
 	         th:style="|background-color: ${post.color}; border: 1px solid ${post.borderColor};|">
+			 <form th:action="@{/posts/{id}/delete(id=${post.id})}" method="post" style="margin-top: 8px;">
+			     <button type="submit" style="font-size: large;">+</button>
+			 </form>
 	        <div class="content" th:text="${post.content}">글 내용</div>
 	        <div th:if="${post.image != null}">
 	            <img th:src="@{/posts/{id}/image(id=${post.id})}" style="width: 160px;" alt="이미지" />
