@@ -50,6 +50,11 @@ public class ViewController {
     	
     }
     
+    @GetMapping("/")
+    public String redirectToPosts() {
+        return "redirect:/posts";
+    }
+    
     @GetMapping("/posts")
     public String list(Model model) {
         List<Post> postList = postService.findAll(); // PostService에서 글 목록 조회
